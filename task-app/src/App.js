@@ -1,15 +1,18 @@
-import React from 'react';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import React from "react";
+import { BrowseRouter, Router } from "react-router-dom";
+import Tasks from "./Components/Tasks";
+import "./App.css";
+import Navbar from "./Components/Navbar";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <Counter />
-      </header>
-    </div>
-  );
+	return (
+		<Router>
+			<div className="App">
+				<Navbar />
+				<Tasks />
+			</div>
+		</Router>
+	);
 }
 
 export default App;
