@@ -3,7 +3,7 @@ import { useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addTask, deleteTask } from "../actions/taskAction";
 
-const Cart = () => {
+const Tasks = () => {
 	const state = useSelector((state) => state);
 	const dispatch = useDispatch();
 
@@ -24,9 +24,9 @@ const Cart = () => {
 		<div>
 			<h2>Tasks</h2>
 			<ul>
-				{state.taskReducer.map((task, index) => {
+				{state.tasks.map((task, index) => {
 					return (
-						<li>
+						<li key={index}>
 							{task}
 							<button onClick={() => handleDelete(index)}>Delete Task</button>
 						</li>
@@ -45,4 +45,4 @@ const Cart = () => {
 	);
 };
 
-export default Cart;
+export default Tasks;

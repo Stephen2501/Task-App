@@ -1,6 +1,6 @@
 import { ADD_TASK, DELETE_TASK } from "../actionTypes/actionTypes";
 
-export default function taskReducer(state = [], action) {
+export default function tasks(state = [], action) {
 	switch (action.type) {
 		case ADD_TASK:
 			return [...state, action.value];

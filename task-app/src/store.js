@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
-import taskReducer from "./reducers/taskReducer";
+import tasks from "./reducers/taskReducer";
+import links from "./reducers/linkReducer"
 
 const reducer = combineReducers({
-	taskReducer,
+	tasks,
+	links,
 });
 
 const store = configureStore({

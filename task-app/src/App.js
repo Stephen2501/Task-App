@@ -1,16 +1,22 @@
 import React from "react";
-import { BrowseRouter, Router } from "react-router-dom";
-import Tasks from "./Components/Tasks";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
-import Navbar from "./Components/Navbar";
+import NavBar from "./Components/NavBar";
+import Tasks from "./Components/Tasks";
+import Settings from "./Components/Settings";
+import Points from "./Components/Points"
+import Completed from "./Components/Completed";
 
 function App() {
 	return (
 		<Router>
-			<div className="App">
-				<Navbar />
-				<Tasks />
-			</div>
+			<NavBar />
+			<Routes>
+				<Route path="/" element={<Tasks />} />
+				<Route path="/settings" element={<Settings />} />
+				<Route path="/points" element={<Points />} />
+				<Route path="/completed" element={<Completed/>} />
+			</Routes>
 		</Router>
 	);
 }

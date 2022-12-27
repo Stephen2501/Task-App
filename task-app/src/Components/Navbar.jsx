@@ -1,16 +1,26 @@
-import {Link} from "react-router-dom"
+import React from "react";
+import { connect } from "react-redux";
 
-export default function Navbar() {
-    return (
-        <nav>
-            <ul>
-                <li>
-                    <Link to="/">Home</Link>
-                </li>
-                <li>
-                    <Link to="/organistation">Organistation</Link>
-                </li>
-            </ul>
-        </nav>
-    )
-}
+const Navbar = ({ links }) => {
+	return (
+		<nav>
+			{links && (
+				<ul>
+					{links.map((link) => (
+						<li key={link.id}>
+							<a href={link.url}>{link.text}</a>
+						</li>
+					))}
+				</ul>
+			)}
+		</nav>
+	);
+};
+
+const mapStateToProps = (state) => {
+	return {
+		links: state.links,
+	};
+};
+
+export default connect(mapStateToProps)(Navbar);
