@@ -9,13 +9,15 @@ export default function Settings() {
 	const state = useSelector((state) => state);
 	const dispatch = useDispatch();
 
-	const inputEl = useRef(null);
+	const inputEl1 = useRef(null);
+	const inputEl2 = useRef(null);
+	const inputEl3 = useRef(null);
 
 	const handleDailySubmit = (e) => {
 		e.preventDefault();
-		const value = inputEl.current.value;
+		const value = inputEl1.current.value;
 		dispatch(addDailyTask(value));
-		inputEl.current.value = "";
+		inputEl1.current.value = "";
 	};
 
 	const handleDailyDelete = (task) => {
@@ -24,9 +26,9 @@ export default function Settings() {
 
 	const handleWeeklySubmit = (e) => {
 		e.preventDefault();
-		const value = inputEl.current.value;
+		const value = inputEl2.current.value;
 		dispatch(addWeeklyTask(value));
-		inputEl.current.value = "";
+		inputEl2.current.value = "";
 	};
 
 	const handleWeeklyDelete = (task) => {
@@ -35,9 +37,9 @@ export default function Settings() {
 
 	const handleCustomSubmit = (e) => {
 		e.preventDefault();
-		const value = inputEl.current.value;
+		const value = inputEl3.current.value;
 		dispatch(addCustomTask(value));
-		inputEl.current.value = "";
+		inputEl3.current.value = "";
 	};
 
 	const handleCustomDelete = (task) => {
@@ -50,7 +52,7 @@ export default function Settings() {
 				<h2>Daily tasks</h2>
 				<form>
 					<input
-						ref={inputEl}
+						ref={inputEl1}
 						placeholder="add task"
 						aria-label="add task"
 					></input>
@@ -73,7 +75,7 @@ export default function Settings() {
 				<h2>Weekly tasks</h2>
 				<form>
 					<input
-						ref={inputEl}
+						ref={inputEl2}
 						placeholder="add task"
 						aria-label="add task"
 					></input>
@@ -96,7 +98,7 @@ export default function Settings() {
 				<h2>Custom tasks</h2>
 				<form>
 					<input
-						ref={inputEl}
+						ref={inputEl3}
 						placeholder="add task"
 						aria-label="add task"
 					></input>
