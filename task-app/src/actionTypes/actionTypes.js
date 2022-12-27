@@ -1,3 +1,7 @@
 export const SET_LINKS = "SET_LINK"
-export const ADD_TASK = "ADD_TASK";
-export const DELETE_TASK = "DELETE_TASK";
+export const ADD_DAILY_TASK = "ADD_DAILY_TASK";
+export const DELETE_DAILY_TASK = "DELETE_DAILY_TASK";
+export const ADD_WEEKLY_TASK = "ADD_WEEKLY_TASK";
+export const DELETE_WEEKLY_TASK = "DELETE_WEEKLY_TASK";
+export const ADD_CUSTOM_TASK = "ADD_CUSTOM_TASK";
+export const DELETE_CUSTOM_TASK = "DELETE_CUSTOM_TASK";

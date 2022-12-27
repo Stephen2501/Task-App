@@ -8,7 +8,27 @@ const Tasks = () => {
 		<div>
 			<h2>Daily tasks</h2>
 			<ul>
-				{state.tasks.map((task, index) => {
+				{state.dailyTasks.map((task, index) => {
+					return (
+						<li key={index}>
+							{task}
+						</li>
+					);
+				})}
+			</ul>
+            <h2>Weekly tasks</h2>
+			<ul>
+				{state.weeklyTasks.map((task, index) => {
+					return (
+						<li key={index}>
+							{task}
+						</li>
+					);
+				})}
+			</ul>
+            <h2>Custom tasks</h2>
+			<ul>
+				{state.customTasks.map((task, index) => {
 					return (
 						<li key={index}>
 							{task}

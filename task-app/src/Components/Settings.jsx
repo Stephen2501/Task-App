@@ -1,7 +1,9 @@
 import React from "react";
 import { useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { addTask, deleteTask } from "../actions/taskAction";
+import { addDailyTask, deleteDailyTask } from "../actions/dailyTaskAction";
+import { addWeeklyTask, deleteWeeklyTask } from "../actions/weeklyTaskAction";
+import { addCustomTask, deleteCustomTask } from "../actions/customTaskAction";
 
 export default function Settings() {
 	const state = useSelector((state) => state);
@@ -9,16 +11,39 @@ export default function Settings() {
 
 	const inputEl = useRef(null);
 
-	const handleSubmit = (e) => {
+	const handleDailySubmit = (e) => {
 		e.preventDefault();
 		const value = inputEl.current.value;
-		dispatch(addTask(value));
+		dispatch(addDailyTask(value));
 		inputEl.current.value = "";
 	};
 
-	const handleDelete = (task) => {
-		dispatch(deleteTask(task));
+	const handleDailyDelete = (task) => {
+		dispatch(deleteDailyTask(task));
 	};
+
+    const handleWeeklySubmit = (e) => {
+		e.preventDefault();
+		const value = inputEl.current.value;
+		dispatch(addWeeklyTask(value));
+		inputEl.current.value = "";
+	};
+
+	const handleWeeklyDelete = (task) => {
+		dispatch(deleteWeeklyTask(task));
+	};
+
+    const handleCustomSubmit = (e) => {
+		e.preventDefault();
+		const value = inputEl.current.value;
+		dispatch(addCustomTask(value));
+		inputEl.current.value = "";
+	};
+
+	const handleCustomDelete = (task) => {
+		dispatch(deleteCustomTask(task));
+	};
+    
 
 	return (
 		<div>
@@ -29,14 +54,52 @@ export default function Settings() {
 					placeholder="add task"
 					aria-label="add task"
 				></input>
-				<button onClick={handleSubmit}>Add task to list</button>
+				<button onClick={handleDailySubmit}>Add task to list</button>
 			</form>
 			<ul>
-				{state.tasks.map((task, index) => {
+				{state.dailyTasks.map((task, index) => {
 					return (
 						<li key={index}>
 							{task}
-							<button onClick={() => handleDelete(index)}>Delete Task</button>
+							<button onClick={() => handleDailyDelete(index)}>Delete Task</button>
+						</li>
+					);
+				})}
+			</ul>
+            <h2>Weekly tasks</h2>
+			<form>
+				<input
+					ref={inputEl}
+					placeholder="add task"
+					aria-label="add task"
+				></input>
+				<button onClick={handleWeeklySubmit}>Add task to list</button>
+			</form>
+			<ul>
+				{state.weeklyTasks.map((task, index) => {
+					return (
+						<li key={index}>
+							{task}
+							<button onClick={() => handleWeeklyDelete(index)}>Delete Task</button>
+						</li>
+					);
+				})}
+			</ul>
+            <h2>Custom tasks</h2>
+			<form>
+				<input
+					ref={inputEl}
+					placeholder="add task"
+					aria-label="add task"
+				></input>
+				<button onClick={handleCustomSubmit}>Add task to list</button>
+			</form>
+			<ul>
+				{state.customTasks.map((task, index) => {
+					return (
+						<li key={index}>
+							{task}
+							<button onClick={() => handleCustomDelete(index)}>Delete Task</button>
 						</li>
 					);
 				})}
