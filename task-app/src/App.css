@@ -51,3 +51,8 @@
 .cart {
   text-align: center;
 }
+
+.tasks {
+  padding: 1%;
+  display: inline-block;
+}
