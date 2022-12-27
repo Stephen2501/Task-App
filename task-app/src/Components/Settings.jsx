@@ -23,6 +23,14 @@ export default function Settings() {
 	return (
 		<div>
 			<h2>Daily tasks</h2>
+			<form>
+				<input
+					ref={inputEl}
+					placeholder="add task"
+					aria-label="add task"
+				></input>
+				<button onClick={handleSubmit}>Add task to list</button>
+			</form>
 			<ul>
 				{state.tasks.map((task, index) => {
 					return (
@@ -33,14 +41,6 @@ export default function Settings() {
 					);
 				})}
 			</ul>
-			<form>
-				<input
-					ref={inputEl}
-					placeholder="add task"
-					aria-label="add task"
-				></input>
-				<button onClick={handleSubmit}>Add task to list</button>
-			</form>
 		</div>
 	);
 }
