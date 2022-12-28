@@ -1,14 +1,17 @@
-import { ADD_WEEKLY_TASK, DELETE_WEEKLY_TASK } from "../actionTypes/actionTypes";
+import { ADD_WEEKLY_TASK } from "../actionTypes/actionTypes";
 
-export default function tasks(state = [], action) {
+const initialState = {
+    weekly: []
+}
+
+export default function weeklyTasks(state = initialState, action) {
+
 	switch (action.type) {
 		case ADD_WEEKLY_TASK:
-			return [...state, action.value];
-		case DELETE_WEEKLY_TASK:
-			return [
-				...state.slice(0, action.index),
-				...state.slice(action.index + 1),
-			];
+			return {
+                ...state,
+                weekly: [...state.weekly, action.payload]
+            }
 		default:
 			return state;
 	}

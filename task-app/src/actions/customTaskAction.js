@@ -1,17 +1,21 @@
 import { ADD_CUSTOM_TASK, DELETE_CUSTOM_TASK } from "../actionTypes/actionTypes";
 
-const addCustomTask = (value) => {
+const addCustomTask = (task, id, timestamp, day) => {
   return {
     type: ADD_CUSTOM_TASK,
-    value,
+    payload: {
+        task,
+        id,
+        timestamp,
+        day,
+    }
   };
 };
 
-const deleteCustomTask = (index) => {
-  return {
-    type: DELETE_CUSTOM_TASK,
-    index,
-  };
-};
+const deleteCustomTask = (id) => ({
+  type: DELETE_CUSTOM_TASK,
+  payload: id,
+});
+
 
 export { addCustomTask, deleteCustomTask };

@@ -6,21 +6,19 @@ const Tasks = () => {
 
 	return (
 		<div>
-			<div className="tasks">
-			</div>
-			<div className="tasks">
-				<h2>Weekly tasks</h2>
+			<div>
+				<h2>Daily tasks</h2>
 				<ul>
-					{state.weeklyTasks.map((task, index) => {
-						return <li key={index}>{task}</li>;
+					{state.dailyTasks.daily.map((task) => {
+						return <li>{task.task}</li>;
 					})}
 				</ul>
 			</div>
-			<div className="tasks">
-				<h2>Custom tasks</h2>
+			<div>
+				<h2>Weekly tasks</h2>
 				<ul>
-					{state.customTasks.map((task, index) => {
-						return <li key={index}>{task}</li>;
+					{state.weeklyTasks.weekly.map((task) => {
+						return <li>{task.task}</li>;
 					})}
 				</ul>
 			</div>

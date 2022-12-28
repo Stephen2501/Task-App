@@ -1,99 +1,81 @@
 import React from "react";
-import { useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { addDailyTask} from "../actions/dailyTaskAction";
-import { addWeeklyTask, deleteWeeklyTask } from "../actions/weeklyTaskAction";
-import { addCustomTask, deleteCustomTask } from "../actions/customTaskAction";
-import Form from "./Form";
+import { deleteDailyTask } from "../actions/dailyTaskAction";
+import { deleteWeeklyTask } from "../actions/weeklyTaskAction";
+import { deleteCustomTask } from "../actions/customTaskAction";
+import DailyForm from "./DailyForm";
+import WeeklyForm from "./WeeklyForm";
+import CustomForm from "./CustomForm";
 
 export default function Settings() {
 	const state = useSelector((state) => state);
+
 	const dispatch = useDispatch();
 
-	const inputEl2 = useRef(null);
-	const inputEl3 = useRef(null);
-
-	console.log(state)
-
-	const handleWeeklySubmit = (e) => {
-		e.preventDefault();
-		const value = inputEl2.current.value;
-		dispatch(addWeeklyTask(value));
-		inputEl2.current.value = "";
+	const handleDailyDelete = (id) => {
+		dispatch(deleteDailyTask(id));
 	};
 
-	const handleWeeklyDelete = (task) => {
-		dispatch(deleteWeeklyTask(task));
+	const handleWeeklyDelete = (id) => {
+		dispatch(deleteWeeklyTask(id));
 	};
 
-	const handleCustomSubmit = (e) => {
-		e.preventDefault();
-		const value = inputEl3.current.value;
-		dispatch(addCustomTask(value));
-		inputEl3.current.value = "";
-	};
-
-	const handleCustomDelete = (task) => {
-		dispatch(deleteCustomTask(task));
+	const handleCustomDelete = (id) => {
+		dispatch(deleteCustomTask(id));
 	};
 
 	return (
 		<div>
-			<h2>Add daily task</h2>
-			<Form/>
-			<h2>Daily Tasks</h2>
-			<ul>
-				{state.dailyTasks.daily.map((task) => {
-					return(
-						<li key={task.id}>
-							<div>{task.task}</div>
-							<div>by: {task.timestamp}</div>
-							</li>
-					)
-				})}
-			</ul>
-			<div className="tasks">
-			</div>
-			<div className="tasks">
-				<h2>Weekly tasks</h2>
-				<form>
-					<input
-						ref={inputEl2}
-						placeholder="add task"
-						aria-label="add task"
-					></input>
-					<button onClick={handleWeeklySubmit}>Add task to list</button>
-				</form>
+			<div>
+				<h2>Add daily task</h2>
+				<DailyForm />
+				<h2>Daily Tasks</h2>
 				<ul>
-					{state.weeklyTasks.map((task, index) => {
+					{state.dailyTasks.daily.map((task) => {
 						return (
-							<li key={index}>
-								{task}
-								<button onClick={() => handleWeeklyDelete(index)}>
-									Delete Task
+							<li key={task.id}>
+								<div>{task.task}</div>
+								{task.timestamp && <div>by: {task.timestamp}</div>}
+								<button onClick={() => handleDailyDelete(task.id)}>
+									Delete
 								</button>
 							</li>
 						);
 					})}
 				</ul>
 			</div>
-			<div className="tasks">
-				<h2>Custom tasks</h2>
-				<form>
-					<input
-						ref={inputEl3}
-						placeholder="add task"
-						aria-label="add task"
-					></input>
-					<button onClick={handleCustomSubmit}>Add task to list</button>
-				</form>
+			<div>
+				<h2>Add weekly task</h2>
+				<WeeklyForm />
+				<h2>Weekly Tasks</h2>
 				<ul>
-					{state.customTasks.map((task, index) => {
+					{state.weeklyTasks.weekly.map((task) => {
 						return (
-							<li key={index}>
-								{task}
-								<button onClick={() => handleCustomDelete(index)}>
-									Delete Task
+							<li key={task.id}>
+								<div>{task.task}</div>
+								<div>on {task.day}</div>
+								<button onClick={() => handleWeeklyDelete(task.id)}>
+									Delete
+								</button>
+							</li>
+						);
+					})}
+				</ul>
+			</div>
+			<div>
+				<h2>Add custom task</h2>
+				<CustomForm />
+				<h2>Custom Tasks</h2>
+				<ul>
+					{state.customTasks.custom.map((task) => {
+						return (
+							<li key={task.id}>
+								<div>{task.task}</div>
+								<div>
+									by {task.day} at {task.timestamp}
+								</div>
+								<button onClick={() => handleCustomDelete(task.id)}>
+									Delete
 								</button>
 							</li>
 						);

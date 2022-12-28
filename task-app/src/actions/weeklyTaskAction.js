@@ -1,17 +1,21 @@
 import { ADD_WEEKLY_TASK, DELETE_WEEKLY_TASK } from "../actionTypes/actionTypes";
 
-const addWeeklyTask = (value) => {
+const addWeeklyTask = (task, id, timestamp, day) => {
   return {
     type: ADD_WEEKLY_TASK,
-    value,
+    payload: {
+        task,
+        id,
+        timestamp,
+        day,
+    }
   };
 };
 
-const deleteWeeklyTask = (index) => {
-  return {
-    type: DELETE_WEEKLY_TASK,
-    index,
-  };
-};
+const deleteWeeklyTask = (id) => ({
+  type: DELETE_WEEKLY_TASK,
+  payload: id,
+});
+
 
 export { addWeeklyTask, deleteWeeklyTask };

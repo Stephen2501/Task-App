@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { useDispatch } from 'react-redux';
 import { addDailyTask } from '../actions/dailyTaskAction';
 
-const Form = () => {
+const DailyForm = () => {
   const [name, setName] = useState('');
   const [timestamp, setTimestamp] = useState('');
   const dispatch = useDispatch();
@@ -28,4 +28,4 @@ const Form = () => {
   );
 };
 
-export default Form;
+export default DailyForm;
