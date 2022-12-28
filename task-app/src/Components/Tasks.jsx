@@ -7,12 +7,6 @@ const Tasks = () => {
 	return (
 		<div>
 			<div className="tasks">
-				<h2>Daily tasks</h2>
-				<ul>
-					{state.dailyTasks.map((task, index) => {
-						return <li key={index}>{task}</li>;
-					})}
-				</ul>
 			</div>
 			<div className="tasks">
 				<h2>Weekly tasks</h2>

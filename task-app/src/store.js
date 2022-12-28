@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
-import dailyTasks from "./reducers/dailyTaskReducer";
 import weeklyTasks from "./reducers/weeklyTaskReducer";
 import customTasks from "./reducers/customTaskReducer";
+import dailyTasks from "./reducers/dailyTaskReducer"
 import links from "./reducers/linkReducer";
 import storage from 'redux-persist/lib/storage';
 import { persistReducer, persistStore } from 'redux-persist';
@@ -14,9 +14,9 @@ const persistConfig = {
 }
 
 const rootReducer = combineReducers({
-	dailyTasks,
 	weeklyTasks,
 	customTasks,
+  dailyTasks,
 	links
 })
 

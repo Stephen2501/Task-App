@@ -1,28 +1,19 @@
 import React from "react";
 import { useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { addDailyTask, deleteDailyTask } from "../actions/dailyTaskAction";
+import { addDailyTask} from "../actions/dailyTaskAction";
 import { addWeeklyTask, deleteWeeklyTask } from "../actions/weeklyTaskAction";
 import { addCustomTask, deleteCustomTask } from "../actions/customTaskAction";
+import Form from "./Form";
 
 export default function Settings() {
 	const state = useSelector((state) => state);
 	const dispatch = useDispatch();
 
-	const inputEl1 = useRef(null);
 	const inputEl2 = useRef(null);
 	const inputEl3 = useRef(null);
 
-	const handleDailySubmit = (e) => {
-		e.preventDefault();
-		const value = inputEl1.current.value;
-		dispatch(addDailyTask(value));
-		inputEl1.current.value = "";
-	};
-
-	const handleDailyDelete = (task) => {
-		dispatch(deleteDailyTask(task));
-	};
+	console.log(state)
 
 	const handleWeeklySubmit = (e) => {
 		e.preventDefault();
@@ -48,28 +39,20 @@ export default function Settings() {
 
 	return (
 		<div>
-			<div className="tasks">
-				<h2>Daily tasks</h2>
-				<form>
-					<input
-						ref={inputEl1}
-						placeholder="add task"
-						aria-label="add task"
-					></input>
-					<button onClick={handleDailySubmit}>Add task to list</button>
-				</form>
-				<ul>
-					{state.dailyTasks.map((task, index) => {
-						return (
-							<li key={index}>
-								{task}
-								<button onClick={() => handleDailyDelete(index)}>
-									Delete Task
-								</button>
+			<h2>Add daily task</h2>
+			<Form/>
+			<h2>Daily Tasks</h2>
+			<ul>
+				{state.dailyTasks.daily.map((task) => {
+					return(
+						<li key={task.id}>
+							<div>{task.task}</div>
+							<div>by: {task.timestamp}</div>
 							</li>
-						);
-					})}
-				</ul>
+					)
+				})}
+			</ul>
+			<div className="tasks">
 			</div>
 			<div className="tasks">
 				<h2>Weekly tasks</h2>
