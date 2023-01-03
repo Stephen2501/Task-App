@@ -22,6 +22,14 @@ const Tasks = () => {
 					})}
 				</ul>
 			</div>
+			<div>
+				<h2>Custom tasks</h2>
+				<ul>
+					{state.customTasks.custom.map((task) => {
+						return <li>{task.task}</li>;
+					})}
+				</ul>
+			</div>
 		</div>
 	);
 };
