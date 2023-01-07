@@ -11,7 +11,8 @@ const DailyForm = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const id = uuidv4();
-    dispatch(addDailyTask(name, id, timestamp));
+    const completed = false
+    dispatch(addDailyTask(name, id, timestamp, completed));
     event.target.reset()
   };
 

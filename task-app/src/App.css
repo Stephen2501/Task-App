@@ -11,5 +11,13 @@
   color: rgb(112, 76, 182);
 }
 
+.completed {
+  text-decoration: line-through;
+  color: green;
+  font-size: 0.8em;
+}
 
-
+.uncompleted {
+  color: red;
+  font-weight: bold;
+}

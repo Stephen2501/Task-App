@@ -6,6 +6,7 @@ import { deleteCustomTask } from "../actions/customTaskAction";
 import DailyForm from "./DailyForm";
 import WeeklyForm from "./WeeklyForm";
 import CustomForm from "./CustomForm";
+import dateFormat from "../utils/dateFormat";
 
 export default function Settings() {
 	const state = useSelector((state) => state);
@@ -72,7 +73,7 @@ export default function Settings() {
 							<li key={task.id}>
 								<div>{task.task}</div>
 								<div>
-									by {task.day} at {task.timestamp}
+									by {dateFormat(task.date)} at {task.timestamp}
 								</div>
 								<button onClick={() => handleCustomDelete(task.id)}>
 									Delete

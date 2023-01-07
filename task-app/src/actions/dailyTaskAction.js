@@ -1,4 +1,4 @@
-import { ADD_DAILY_TASK, DELETE_DAILY_TASK } from "../actionTypes/actionTypes";
+import { ADD_DAILY_TASK, DELETE_DAILY_TASK, COMPLETE_DAILY_TASK } from "../actionTypes/actionTypes";
 
 const addDailyTask = (task, id, timestamp) => {
   return {
@@ -16,5 +16,11 @@ const deleteDailyTask = (id) => ({
   payload: id,
 });
 
+function completeDailyTask(id) {
+  return {
+    type: COMPLETE_DAILY_TASK,
+    payload: id,
+  };
+}
 
-export { addDailyTask, deleteDailyTask };
+export { addDailyTask, deleteDailyTask, completeDailyTask };
