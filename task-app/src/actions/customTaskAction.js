@@ -1,6 +1,6 @@
-import { ADD_CUSTOM_TASK, DELETE_CUSTOM_TASK } from "../actionTypes/actionTypes";
+import { ADD_CUSTOM_TASK, DELETE_CUSTOM_TASK, COMPLETE_CUSTOM_TASK } from "../actionTypes/actionTypes";
 
-const addCustomTask = (task, id, timestamp, date) => {
+const addCustomTask = (task, id, timestamp, date, completed) => {
   return {
     type: ADD_CUSTOM_TASK,
     payload: {
@@ -8,6 +8,7 @@ const addCustomTask = (task, id, timestamp, date) => {
         id,
         timestamp,
         date,
+        completed,
     }
   };
 };
@@ -17,5 +18,12 @@ const deleteCustomTask = (id) => ({
   payload: id,
 });
 
+function completeCustomTask(id) {
+  return {
+    type: COMPLETE_CUSTOM_TASK,
+    payload: id,
+  };
+}
 
-export { addCustomTask, deleteCustomTask };
+
+export { addCustomTask, deleteCustomTask, completeCustomTask };

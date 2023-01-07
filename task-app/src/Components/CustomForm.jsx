@@ -14,7 +14,8 @@ const CustomForm = () => {
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		const id = uuidv4();
-		dispatch(addCustomTask(name, id, timestamp, date));
+		const completed = false
+		dispatch(addCustomTask(name, id, timestamp, date, completed));
 		event.target.reset();
 	};
 

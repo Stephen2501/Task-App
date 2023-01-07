@@ -1,12 +1,13 @@
 import { ADD_DAILY_TASK, DELETE_DAILY_TASK, COMPLETE_DAILY_TASK } from "../actionTypes/actionTypes";
 
-const addDailyTask = (task, id, timestamp) => {
+const addDailyTask = (task, id, timestamp, completed) => {
   return {
     type: ADD_DAILY_TASK,
     payload: {
         task,
         id,
         timestamp,
+        completed
     }
   };
 };

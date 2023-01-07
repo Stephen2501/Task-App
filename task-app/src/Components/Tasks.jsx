@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 import dateFormat from "../utils/dateFormat";
 import { completeDailyTask } from "../actions/dailyTaskAction";
 import { useDispatch } from "react-redux";
+import { completeWeeklyTask } from "../actions/weeklyTaskAction";
+import { completeCustomTask } from "../actions/customTaskAction";
 
 const Tasks = () => {
 	const state = useSelector((state) => state);
@@ -12,6 +14,14 @@ const Tasks = () => {
 		dispatch(completeDailyTask(id));
 	};
 
+	const handleWeeklyToggle = (id) => {
+		dispatch(completeWeeklyTask(id));
+	};
+
+	const handleCustomToggle = (id) => {
+		dispatch(completeCustomTask(id));
+	};
+
 	return (
 		<div>
 			<div>
@@ -19,7 +29,11 @@ const Tasks = () => {
 				<ul>
 					{state.dailyTasks.daily.map((task) => {
 						return (
-							<div key={task.id} className={task.completed ? 'completed' : 'uncompleted'} onClick={() => handleDailyToggle(task.id)}>
+							<div
+								key={task.id}
+								className={task.completed ? "completed" : "uncompleted"}
+								onClick={() => handleDailyToggle(task.id)}
+							>
 								<li>
 									{task.task}
 									{task.timestamp && <div>by: {task.timestamp}</div>}
@@ -34,10 +48,16 @@ const Tasks = () => {
 				<ul>
 					{state.weeklyTasks.weekly.map((task) => {
 						return (
-							<li>
-								{task.task}
-								<div>on {task.day}</div>
-							</li>
+							<div
+								key={task.id}
+								className={task.completed ? "completed" : "uncompleted"}
+								onClick={() => handleWeeklyToggle(task.id)}
+							>
+								<li>
+									{task.task}
+									<div>on {task.day}</div>
+								</li>
+							</div>
 						);
 					})}
 				</ul>
@@ -47,12 +67,18 @@ const Tasks = () => {
 				<ul>
 					{state.customTasks.custom.map((task) => {
 						return (
-							<li>
-								{task.task}
-								<div>
-									by {dateFormat(task.date)} at {task.timestamp}
-								</div>
-							</li>
+							<div
+								key={task.id}
+								className={task.completed ? "completed" : "uncompleted"}
+								onClick={() => handleCustomToggle(task.id)}
+							>
+								<li>
+									{task.task}
+									<div>
+										by {dateFormat(task.date)} at {task.timestamp}
+									</div>
+								</li>
+							</div>
 						);
 					})}
 				</ul>

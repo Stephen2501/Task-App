@@ -12,7 +12,8 @@ const WeeklyForm = () => {
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		const id = uuidv4();
-		dispatch(addWeeklyTask(name, id, timestamp, day));
+		const completed = false
+		dispatch(addWeeklyTask(name, id, timestamp, day, completed));
 		event.target.reset();
 	};
 
