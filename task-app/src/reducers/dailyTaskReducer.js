@@ -2,6 +2,7 @@ import {
 	ADD_DAILY_TASK,
 	DELETE_DAILY_TASK,
 	COMPLETE_DAILY_TASK,
+	RESET_DAILY_TASKS,
 } from "../actionTypes/actionTypes";
 
 const initialState = {
@@ -32,6 +33,11 @@ export default function dailyTasks(state = initialState, action) {
 					}
 					return task;
 				}),
+			};
+		case RESET_DAILY_TASKS:
+			return {
+				...state,
+				daily: state.daily.map((task) => ({ ...task, completed: false })),
 			};
 		default:
 			return state;

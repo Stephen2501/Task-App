@@ -4,6 +4,7 @@ import dateFormat from "../utils/dateFormat";
 import { completeDailyTask } from "../actions/dailyTaskAction";
 import { useDispatch } from "react-redux";
 import { completeWeeklyTask } from "../actions/weeklyTaskAction";
+import { resetDailyTasks } from "../actions/dailyTaskAction";
 import { completeCustomTask } from "../actions/customTaskAction";
 
 const Tasks = () => {
@@ -21,6 +22,26 @@ const Tasks = () => {
 	const handleCustomToggle = (id) => {
 		dispatch(completeCustomTask(id));
 	};
+
+	function scheduleReset() {
+		// Get the current time
+		const now = new Date();
+
+		// Set the time for the next 4am
+		let nextReset = new Date(now);
+		nextReset.setHours(9, 30, 0, 0);
+		// If the current time is after 4am, set the time for 4am on the next day
+		if (now.getTime() > nextReset.getTime()) {
+			nextReset.setDate(nextReset.getDate() + 1);
+		}
+		console.log('resetting')
+		// Set an interval to run the reset action at the next 4am
+		setInterval(() => {
+			dispatch(resetDailyTasks());
+		}, 86400000);
+	}
+
+	scheduleReset();
 
 	return (
 		<div>
