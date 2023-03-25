@@ -4,8 +4,9 @@ import { connect } from "react-redux";
 const Navbar = ({ links }) => {
 	return (
 		<nav>
+			<div className="navbar">
 			{links && (
-				<ul>
+				<ul className="link">
 					{links.map((link) => (
 						<li key={link.id}>
 							<a href={link.url}>{link.text}</a>
@@ -13,6 +14,7 @@ const Navbar = ({ links }) => {
 					))}
 				</ul>
 			)}
+			</div>
 		</nav>
 	);
 };

@@ -21,3 +21,18 @@
   color: red;
   font-weight: bold;
 }
+
+.navbar {
+  width: 100vw;
+  height: 6vh;
+  background-color: turquoise;
+  text-align: center;
+  display: inline-block
+}
+
+ul {
+  display: flex;
+  font-size: 40px;
+  list-style-type: none;
+  justify-content: space-evenly;
+}

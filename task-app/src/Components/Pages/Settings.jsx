@@ -1,12 +1,12 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { deleteDailyTask } from "../actions/dailyTaskAction";
-import { deleteWeeklyTask } from "../actions/weeklyTaskAction";
-import { deleteCustomTask } from "../actions/customTaskAction";
-import DailyForm from "./DailyForm";
-import WeeklyForm from "./WeeklyForm";
-import CustomForm from "./CustomForm";
-import dateFormat from "../utils/dateFormat";
+import { deleteDailyTask } from "../../actions/dailyTaskAction";
+import { deleteWeeklyTask } from "../../actions/weeklyTaskAction";
+import { deleteCustomTask } from "../../actions/customTaskAction";
+import DailyForm from "../Forms/DailyForm";
+import WeeklyForm from "../Forms/WeeklyForm";
+import CustomForm from "../Forms/CustomForm";
+import dateFormat from "../../utils/dateFormat";
 
 export default function Settings() {
 	const state = useSelector((state) => state);
